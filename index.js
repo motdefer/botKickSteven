@@ -10,7 +10,7 @@ bot.on('ready', () => {
 });
 
 bot.on('message', async (message) => {
-    if (message.content.startsWith("!kick") && message.channel.id == process.env.botmusicid) {
+    if (message.content.startsWith("!kick ") && message.channel.id == process.env.botmusicid) {
 	    
 	    noms = process.env.noms.split(",");
 	    
