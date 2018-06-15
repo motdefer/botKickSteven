@@ -26,7 +26,16 @@ bot.on('message', async (message) => {
 
 bot.on('guildMemberAdd', async (member) => {
 	if (member.id == stevenID) {
+		
+		role = member.guild.roles.get(process.env.roleID);
 
+		oldName = role.name.split(" - ");
+
+		number = deromanize(oldName[0]);
+		number++;
+
+		role.setName(romanize(number) + " - " + oldName[1]);
+		
 		await member.addRole(member.guild.roles.get(process.env.roleID));
 		await member.addRole(member.guild.roles.get(process.env.mauditsID));
 		await member.setNickname(process.env.nomSteven);
@@ -41,16 +50,6 @@ async function kickSteven(message){
 	reason = "";
 	
 	await steven.kick(reason);
-	
-	role = message.guild.roles.get(process.env.roleID);
-	
-	oldName = role.name.split(" - ");
-	
-	number = deromanize(oldName[0]);
-	number++;
-	
-	role.setName(romanize(number) + " - " + oldName[1]);
-
 }
 
 function romanize (num) {
