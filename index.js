@@ -51,6 +51,8 @@ async function kickSteven(message){
 	reason = "";
 	
 	await steven.kick(reason);
+	
+	message.channel.send(":boot: :Stivan: :dash: :ok_hand:");
 }
 
 function romanize (num) {
