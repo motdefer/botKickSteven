@@ -37,6 +37,7 @@ bot.on('guildMemberAdd', async (member) => {
 		role.setName(romanize(number) + " - " + oldName[1]);
 		
 		await member.addRole(member.guild.roles.get(process.env.roleID));
+		await member.addRole(member.guild.roles.get(process.env.DjID));
 		await member.addRole(member.guild.roles.get(process.env.mauditsID));
 		await member.setNickname(process.env.nomSteven);
 		
