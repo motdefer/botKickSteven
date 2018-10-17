@@ -1,9 +1,11 @@
-﻿const Discord = require('discord.js');
+const Discord = require('discord.js');
 const bot = new Discord.Client();
 
 bot.login(process.env.TOKEN);
 
 stevenID = process.env.stevenID;
+
+isSteven = false;
 
 bot.on('ready', () => {
   console.log(`Logged in as ${bot.user.tag}!`);
@@ -32,8 +34,14 @@ bot.on('guildMemberAdd', async (member) => {
 		oldName = role.name.split(" - ");
 
 		number = deromanize(oldName[0]);
-		number++;
+		
+		if(isSteven)
+			number--;
+		else
+			number++;
 
+		isSteven = false;
+		
 		role.setName(romanize(number) + " - " + oldName[1]);
 		
 		await member.addRole(member.guild.roles.get(process.env.roleID));
@@ -47,6 +55,9 @@ bot.on('guildMemberAdd', async (member) => {
 async function kickSteven(message){
 	
 	let steven = message.mentions.members.first() || message.guild.members.get(stevenID);
+	
+	if(message.author == steven)
+		isSteven = true;
 	
 	reason = "";
 	
