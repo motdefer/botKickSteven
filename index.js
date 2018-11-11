@@ -63,7 +63,7 @@ async function kickSteven(message){
 	
 	await steven.kick(reason);
 	
-	message.channel.send(":boot: \:Stivan: :dash: :ok_hand:");
+	message.channel.send(":boot: <:Stivan:453296826859388958> :dash: :ok_hand:");
 }
 
 function romanize (num) {
